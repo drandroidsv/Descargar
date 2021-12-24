@@ -23,9 +23,11 @@ a="Instalar Youtube-Dl"
 b="Version youtube-Dl"
 c="Actualizar Youtube-Dl"
 new="Nueva descarga"
-d="Descargar audio mp3"
+d="Descargar audioo mp3"
 e="Descargar Video"
-f="Salir"
+f="descargar por lista audio"
+g="Descargar por lista video"
+h="Salir"
 
 #directory verification
 directory=$(pwd)
@@ -68,7 +70,7 @@ fi
 clear
 toilet --filter border Descargar 
 echo
-echo -e "$purple(*)$blue Descargar$red v2.0$blue"
+echo -e "$purple(*)$blue Descargar$red v2.6$blue"
 sleep 2
 echo -e "$purple(*)$blue Script creado por$red mastersv"
 sleep 1
@@ -81,7 +83,7 @@ export PS3=$'\e[01;35m(*)\e[01;32m Elige una Opcion:\e[01;33m '
 function menu_principal(){
 echo
 echo
-select menu in "$a" "$b" "$c" "$new" "$d" "$e" "$f";
+select menu in "$a" "$b" "$c" "$new" "$d" "$e" "$f" "$g" "$h";
 do
 case $menu in 
 
@@ -115,17 +117,52 @@ menu_principal
 
 $d)
 youtube-dl --extract-audio --audio-format mp3 $Link
-sleep 2
-exit
+sleep 1
+echo "procesando...."
+sleep 1
+sudo chmod 7777 ~/Music/*.mp3
+clear
+sleep 1
+menu_principal
 ;;
+
 
 $e)
-youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' $Link
-sleep 2
-exit
+youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' $Link 
+sleep 1
+echo "procesando...."
+sleep 1
+sudo chmod 7777 ~/Videos/*.mp4
+clear
+sleep 1
+menu_principal
 ;;
 
+
 $f)
+youtube-dl -a enlaces.txt --extract-audio --audio-format mp3
+sleep 1
+echo "procesando...."
+sleep 1
+sudo chmod 7777 ~/Music/*.mp3
+clear
+sleep 1
+menu_principal
+;;
+
+$g)
+youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' -a enlaces.txt
+sleep 1
+echo "procesando...."
+sleep 1
+sudo chmod 7777 ~/Videos/*.mp4
+clear
+sleep 1
+menu_principal
+;;
+
+
+$h)
 echo -e "$nc($blue*$nc)$green Regresa Pronto..$nc"
 echo -e "$nc($blue*$nc)$green Gracias por usar nuestro Script $blue by MasTerSv..$nc"
 sleep 1
