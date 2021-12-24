@@ -23,7 +23,7 @@ a="Instalar Youtube-Dl"
 b="Version youtube-Dl"
 c="Actualizar Youtube-Dl"
 new="Nueva descarga"
-d="Descargar auido mp3"
+d="Descargar audio mp3"
 e="Descargar Video"
 f="Salir"
 
