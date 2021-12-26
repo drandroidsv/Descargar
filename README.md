@@ -25,6 +25,11 @@ este pequeño programa en BASH ayuda a automatizar las descargas, trabaja princi
 
 
 ## Instalacion 🔧
+* git clone https://github.com/drandroidsv/Descargar.git
+* cd Descargar
+* chmod +x yt-dlp.sh
+* ./yt-dlp.sh
+## Recuerden si no tienen el fork yt-dlp en el menu aparece para instalarlo opcion 1
 
 * descomprimir
 * cd descargas
