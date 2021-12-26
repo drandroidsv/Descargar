@@ -27,7 +27,8 @@ d="Descargar audioo mp3"
 e="Descargar Video"
 f="descargar por lista audio"
 g="Descargar por lista video"
-h="Salir"
+h="player"
+i="Salir"
 
 #directory verification
 directory=$(pwd)
@@ -50,6 +51,18 @@ sleep 1
 echo -e "$red(Toilet)$nc No instalado [$red✗$nc]"
 sleep 1
 echo "Instala escribiendo [sudo apt-get install toilet]"
+sleep 1
+exit 1
+fi
+
+if which cmus >/dev/null; then
+sleep 1
+echo -e "$blue(cmus)$nc ................................................... Instalado [$green✓$nc]"
+else
+sleep 1
+echo -e "$red(cmus)$nc No instalado [$red✗$nc]"
+sleep 1
+echo "Instala escribiendo [sudo apt-get install cmus]"
 sleep 1
 exit 1
 fi
@@ -77,13 +90,12 @@ sleep 1
 echo -e "$purple(*)$blue Regalanos una estrella en github$yellow"
 
 export PS3=$'\e[01;35m(*)\e[01;32m Elige una Opcion:\e[01;33m '
-
 #menu principal
 
 function menu_principal(){
 echo
 echo
-select menu in "$a" "$b" "$c" "$new" "$d" "$e" "$f" "$g" "$h";
+select menu in "$a" "$b" "$c" "$new" "$d" "$e" "$f" "$g" "$h" "$i";
 do
 case $menu in 
 
@@ -161,8 +173,14 @@ sleep 1
 menu_principal
 ;;
 
-
 $h)
+echo "iniciando player"
+sleep 1
+cmus
+menu_principal
+;;
+
+$i)
 echo -e "$nc($blue*$nc)$green Regresa Pronto..$nc"
 echo -e "$nc($blue*$nc)$green Gracias por usar nuestro Script $blue by MasTerSv..$nc"
 sleep 1
